@@ -25,9 +25,29 @@
 
 #pragma mark - GCLog stubs
 
+#if GC_LOG_AVAILABLE
+// GroundControl logging framework is available
+
 // We define a small subset of the C APIs to GCLog so we don't have to include GCLog.h and bring in CF++
 static const int kGGLogWarning = 6;
 extern "C" void GGLog(int level, CFStringRef format, ...) CF_FORMAT_FUNCTION(2,3);
+
+#else
+
+static const int kGGLogWarning = 0;
+void GGLog(int unused, CFStringRef format, ...)
+{
+	va_list va;
+	va_start(va, format);
+	CFStringRef log = CFStringCreateWithFormatAndArguments(kCFAllocatorDefault, nullptr, format, va);
+	va_end(va);
+	CFShow(log);
+	if (log) {
+		CFRelease(log);
+	}
+}
+
+#endif
 
 #pragma mark - Options
 
