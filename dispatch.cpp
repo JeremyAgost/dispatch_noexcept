@@ -11,7 +11,6 @@
 #include <exception>
 #include <thread>
 #include <atomic>
-#include <CoreFoundation/CoreFoundation.h>
 
 // Remove the override macros from the header
 #undef dispatch_sync
@@ -23,38 +22,40 @@
 #undef dispatch_after
 #undef dispatch_after_f
 
-#pragma mark - GCLog stubs
-
-#if GC_LOG_AVAILABLE
-// GroundControl logging framework is available
-
-// We define a small subset of the C APIs to GCLog so we don't have to include GCLog.h and bring in CF++
-static const int kGGLogWarning = 6;
-extern "C" void GGLog(int level, CFStringRef format, ...) CF_FORMAT_FUNCTION(2,3);
-
-#else
-
-static const int kGGLogWarning = 0;
-void GGLog(int unused, CFStringRef format, ...)
-{
-	va_list va;
-	va_start(va, format);
-	CFStringRef log = CFStringCreateWithFormatAndArguments(kCFAllocatorDefault, nullptr, format, va);
-	va_end(va);
-	CFShow(log);
-	if (log) {
-		CFRelease(log);
-	}
-}
-
-#endif
-
 #pragma mark - Options
 
 static std::atomic_bool log_backtrace{false};
 extern "C" void gc_dispatch_except_log_backtrace(bool enable)
 {
 	log_backtrace.store(enable, std::memory_order_relaxed);
+}
+
+static std::atomic<gc_dispatch_except_log_func_ptr> logging_function{nullptr};
+void gc_dispatch_except_log_func(gc_dispatch_except_log_func_ptr ptr)
+{
+	logging_function.store(ptr, std::memory_order_relaxed);
+}
+
+#pragma mark - Logging
+
+void CF_FORMAT_FUNCTION(1,2) LogWarningMessage(CFStringRef format, ...)
+{
+	va_list va;
+	va_start(va, format);
+	CFStringRef log = CFStringCreateWithFormatAndArguments(kCFAllocatorDefault, nullptr, format, va);
+	va_end(va);
+	
+	auto func = logging_function.load(std::memory_order_relaxed);
+	if (func) {
+		func(log);
+	}
+	else {
+		CFShow(log);
+	}
+	
+	if (log) {
+		CFRelease(log);
+	}
 }
 
 #pragma mark - Block wrapping helpers
@@ -79,7 +80,7 @@ static void noexcept_call_block(const std::string &bt_str, Block bl, Args ...arg
 		}
 		// Explicitly catch exception to force a stack unwind
 		catch (...) {
-			GGLog(kGGLogWarning, CFSTR("FATAL APPLICATION ERROR -- An uncaught exception was intercepted before it could hit libdispatch and trigger an undefined behavior fault. Exception will be rethrown in C++ context. Block callee backtrace: %s"), bt_str.c_str());
+			LogWarningMessage(CFSTR("FATAL APPLICATION ERROR -- An uncaught exception was intercepted before it could hit libdispatch and trigger an undefined behavior fault. Exception will be rethrown in C++ context. Block callee backtrace: %s"), bt_str.c_str());
 			throw;
 		}
 	}

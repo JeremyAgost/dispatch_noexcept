@@ -24,6 +24,13 @@ extern "C" {
  */
 extern void gc_dispatch_except_log_backtrace(bool enable);
 	
+typedef void(*gc_dispatch_except_log_func_ptr)(CFStringRef);
+/**
+ * @function gc_dispatch_except_log_func
+ * @param ptr Function pointer that will be called with exception log messages. Pass NULL to use default.
+ */
+extern void gc_dispatch_except_log_func(gc_dispatch_except_log_func_ptr ptr);
+	
 #ifdef __APPLE__
 	#define DNE_SUPPORT_DISPATCH_SYNC
 	#define DNE_SUPPORT_DISPATCH_SYNC_F

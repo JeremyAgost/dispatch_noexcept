@@ -16,7 +16,6 @@ set_target_properties(dispatch_noexcept PROPERTIES DEFINE_SYMBOL DNE_BUILDING_DN
 target_compile_options(dispatch_noexcept PRIVATE  ${GC_COMPILER_ERRORS})
 
 target_link_libraries(dispatch_noexcept
-	GCLog
 	${dispatch}
 	${CoreFoundation}
 )
