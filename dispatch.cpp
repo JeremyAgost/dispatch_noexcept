@@ -38,6 +38,26 @@ void gc_dispatch_except_log_func(gc_dispatch_except_log_func_ptr ptr)
 
 #pragma mark - Logging
 
+#ifdef __APPLE__
+static inline void ShowString(CFStringRef string)
+{
+	CFShow(string);
+}
+#endif
+
+#ifdef __WIN32__
+static inline void ShowString(CFStringRef string)
+{
+	CFIndex alloclen = CFStringGetMaximumSizeForEncoding(CFStringGetLength(string), kCFStringEncodingASCII) + 1;
+	char * cstr = calloc(alloclen, sizeof(char));
+	if (cstr) {
+		CFStringGetCString(string, cstr, alloclen, kCFStringEncodingASCII);
+	}
+	printf("%s\n", cstr);
+	free(cstr);
+}
+#endif
+
 void CF_FORMAT_FUNCTION(1,2) LogWarningMessage(CFStringRef format, ...)
 {
 	va_list va;
@@ -50,7 +70,7 @@ void CF_FORMAT_FUNCTION(1,2) LogWarningMessage(CFStringRef format, ...)
 		func(log);
 	}
 	else {
-		CFShow(log);
+		ShowString(log);
 	}
 	
 	if (log) {
