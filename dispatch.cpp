@@ -8,6 +8,7 @@
 
 #include "dispatch.h"
 #include <string>
+#include <vector>
 #include <exception>
 #include <thread>
 #include <atomic>
@@ -49,12 +50,9 @@ static inline void ShowString(CFStringRef string)
 static inline void ShowString(CFStringRef string)
 {
 	CFIndex alloclen = CFStringGetMaximumSizeForEncoding(CFStringGetLength(string), kCFStringEncodingASCII) + 1;
-	char * cstr = calloc(alloclen, sizeof(char));
-	if (cstr) {
-		CFStringGetCString(string, cstr, alloclen, kCFStringEncodingASCII);
-	}
-	printf("%s\n", cstr);
-	free(cstr);
+	std::vector<char> cstr(static_cast<size_t>(alloclen));
+	CFStringGetCString(string, cstr.data(), alloclen, kCFStringEncodingASCII);
+	printf("%s\n", cstr.data());
 }
 #endif
 
