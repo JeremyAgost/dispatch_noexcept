@@ -1,6 +1,6 @@
 //
 //  dispatch.hpp
-//  GGSharedSupport
+//  dispatch_noexcept
 //
 //  Created by Jeremy Agostino on 6/23/17.
 //  Copyright © 2017 Tekserve. All rights reserved.
