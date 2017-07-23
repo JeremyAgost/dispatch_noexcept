@@ -7,13 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F83157B1F25080300C43446 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F83157A1F25080300C43446 /* main.cpp */; };
+		3F8315811F2508A800C43446 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FAEE7971EFECDF400D60CF8 /* CoreFoundation.framework */; };
+		3F8315841F25093A00C43446 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F83157A1F25080300C43446 /* main.cpp */; };
+		3F8315861F25093A00C43446 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FAEE7971EFECDF400D60CF8 /* CoreFoundation.framework */; };
+		3F83158C1F25098800C43446 /* libdispatch_noexcept.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FAEE7881EFECCA500D60CF8 /* libdispatch_noexcept.dylib */; };
 		3FAEE7931EFECDDF00D60CF8 /* backtrace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FAEE7921EFECCE300D60CF8 /* backtrace.cpp */; };
 		3FAEE7941EFECDDF00D60CF8 /* dispatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FAEE7911EFECCE300D60CF8 /* dispatch.cpp */; };
 		3FAEE7951EFECDEA00D60CF8 /* dispatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FAEE7901EFECCE300D60CF8 /* dispatch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FAEE7981EFECDFA00D60CF8 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FAEE7971EFECDF400D60CF8 /* CoreFoundation.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3F83158D1F25098B00C43446 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3FAEE7801EFECCA500D60CF8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3FAEE7871EFECCA500D60CF8;
+			remoteInfo = dispatch_noexcept;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		3F8315781F25080300C43446 /* test_without_dispatch_noexcept */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test_without_dispatch_noexcept; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F83157A1F25080300C43446 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3F83158B1F25093A00C43446 /* test_with_dispatch_noexcept */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test_with_dispatch_noexcept; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FAEE7881EFECCA500D60CF8 /* libdispatch_noexcept.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libdispatch_noexcept.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FAEE7901EFECCE300D60CF8 /* dispatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dispatch.h; sourceTree = "<group>"; };
 		3FAEE7911EFECCE300D60CF8 /* dispatch.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = dispatch.cpp; sourceTree = "<group>"; };
@@ -22,6 +40,23 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3F8315751F25080300C43446 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F8315811F2508A800C43446 /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F8315851F25093A00C43446 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F83158C1F25098800C43446 /* libdispatch_noexcept.dylib in Frameworks */,
+				3F8315861F25093A00C43446 /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3FAEE7851EFECCA500D60CF8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -33,10 +68,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F8315791F25080300C43446 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				3F83157A1F25080300C43446 /* main.cpp */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
 		3FAEE77F1EFECCA500D60CF8 = {
 			isa = PBXGroup;
 			children = (
 				3FAEE78F1EFECCDB00D60CF8 /* Source */,
+				3F8315791F25080300C43446 /* Test */,
 				3FAEE7891EFECCA500D60CF8 /* Products */,
 				3FAEE7961EFECDF400D60CF8 /* Frameworks */,
 			);
@@ -46,6 +90,8 @@
 			isa = PBXGroup;
 			children = (
 				3FAEE7881EFECCA500D60CF8 /* libdispatch_noexcept.dylib */,
+				3F8315781F25080300C43446 /* test_without_dispatch_noexcept */,
+				3F83158B1F25093A00C43446 /* test_with_dispatch_noexcept */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,6 +128,39 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		3F8315771F25080300C43446 /* test_without_dispatch_noexcept */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F83157E1F25080300C43446 /* Build configuration list for PBXNativeTarget "test_without_dispatch_noexcept" */;
+			buildPhases = (
+				3F8315741F25080300C43446 /* Sources */,
+				3F8315751F25080300C43446 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = test_without_dispatch_noexcept;
+			productName = test_without_dispatch_noexcept;
+			productReference = 3F8315781F25080300C43446 /* test_without_dispatch_noexcept */;
+			productType = "com.apple.product-type.tool";
+		};
+		3F8315821F25093A00C43446 /* test_with_dispatch_noexcept */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F8315881F25093A00C43446 /* Build configuration list for PBXNativeTarget "test_with_dispatch_noexcept" */;
+			buildPhases = (
+				3F8315831F25093A00C43446 /* Sources */,
+				3F8315851F25093A00C43446 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3F83158E1F25098B00C43446 /* PBXTargetDependency */,
+			);
+			name = test_with_dispatch_noexcept;
+			productName = test_without_dispatch_noexcept;
+			productReference = 3F83158B1F25093A00C43446 /* test_with_dispatch_noexcept */;
+			productType = "com.apple.product-type.tool";
+		};
 		3FAEE7871EFECCA500D60CF8 /* dispatch_noexcept */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3FAEE78C1EFECCA500D60CF8 /* Build configuration list for PBXNativeTarget "dispatch_noexcept" */;
@@ -108,6 +187,10 @@
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "GroundControl Solutions Inc.";
 				TargetAttributes = {
+					3F8315771F25080300C43446 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
 					3FAEE7871EFECCA500D60CF8 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Manual;
@@ -127,11 +210,29 @@
 			projectRoot = "";
 			targets = (
 				3FAEE7871EFECCA500D60CF8 /* dispatch_noexcept */,
+				3F8315771F25080300C43446 /* test_without_dispatch_noexcept */,
+				3F8315821F25093A00C43446 /* test_with_dispatch_noexcept */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3F8315741F25080300C43446 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F83157B1F25080300C43446 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F8315831F25093A00C43446 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F8315841F25093A00C43446 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3FAEE7841EFECCA500D60CF8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -143,7 +244,68 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		3F83158E1F25098B00C43446 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3FAEE7871EFECCA500D60CF8 /* dispatch_noexcept */;
+			targetProxy = 3F83158D1F25098B00C43446 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		3F83157C1F25080300C43446 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CODE_SIGN_IDENTITY = "-";
+				DEVELOPMENT_TEAM = FTXEA565T8;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3F83157D1F25080300C43446 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CODE_SIGN_IDENTITY = "-";
+				DEVELOPMENT_TEAM = FTXEA565T8;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3F8315891F25093A00C43446 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CODE_SIGN_IDENTITY = "-";
+				DEVELOPMENT_TEAM = FTXEA565T8;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"INCLUDE_DISPATCH_NOEXCEPT=1",
+					"DEBUG=1",
+				);
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3F83158A1F25093A00C43446 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CODE_SIGN_IDENTITY = "-";
+				DEVELOPMENT_TEAM = FTXEA565T8;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "INCLUDE_DISPATCH_NOEXCEPT=1";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		3FAEE78A1EFECCA500D60CF8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -280,6 +442,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3F83157E1F25080300C43446 /* Build configuration list for PBXNativeTarget "test_without_dispatch_noexcept" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F83157C1F25080300C43446 /* Debug */,
+				3F83157D1F25080300C43446 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F8315881F25093A00C43446 /* Build configuration list for PBXNativeTarget "test_with_dispatch_noexcept" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F8315891F25093A00C43446 /* Debug */,
+				3F83158A1F25093A00C43446 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3FAEE7831EFECCA500D60CF8 /* Build configuration list for PBXProject "dispatch_noexcept" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
