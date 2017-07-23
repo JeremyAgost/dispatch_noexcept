@@ -1,0 +1,170 @@
+Process:               test_without_dispatch_noexcept [78925]
+Path:                  /Users/USER/Library/Developer/Xcode/DerivedData/dispatch_noexcept-gbgxvmirzpgjpsggbzpbebvnqozf/Build/Products/Debug/test_without_dispatch_noexcept
+Identifier:            test_without_dispatch_noexcept
+Version:               0
+Code Type:             X86-64 (Native)
+Parent Process:        fish [34288]
+Responsible:           test_without_dispatch_noexcept [78925]
+User ID:               503
+
+Date/Time:             2017-07-23 12:52:48.212 -0400
+OS Version:            Mac OS X 10.12.5 (16F73)
+Report Version:        12
+Anonymous UUID:        ED05F441-E3C4-13F5-C259-299E7BBA76C2
+
+Sleep/Wake UUID:       D121EB0D-C11D-4F54-B507-DFBCFB79A952
+
+Time Awake Since Boot: 320000 seconds
+Time Since Wake:       14000 seconds
+
+System Integrity Protection: disabled
+
+Crashed Thread:        3  Dispatch queue: com.apple.root.default-qos
+
+Exception Type:        EXC_CRASH (SIGABRT)
+Exception Codes:       0x0000000000000000, 0x0000000000000000
+Exception Note:        EXC_CORPSE_NOTIFY
+
+Application Specific Information:
+abort() called
+terminating with uncaught exception of type std::runtime_error: A nasty error has occurred
+
+Thread 0:
+0   libsystem_kernel.dylib        	0x00007fff9c84e44e __workq_kernreturn + 10
+1   libsystem_pthread.dylib       	0x00007fff9c93848e _pthread_wqthread + 1023
+2   libsystem_pthread.dylib       	0x00007fff9c93807d start_wqthread + 13
+
+Thread 1:: Dispatch queue: com.apple.root.default-qos.overcommit
+0   libsystem_kernel.dylib        	0x00007fff9c84e1e6 __sigsuspend_nocancel + 10
+1   libdispatch.dylib             	0x00007fff9c6f7264 _dispatch_sigsuspend + 21
+2   libdispatch.dylib             	0x00007fff9c6f724f _dispatch_sig_thread + 41
+
+Thread 2:
+0   libsystem_pthread.dylib       	0x00007fff9c938070 start_wqthread + 0
+
+Thread 3 Crashed:: Dispatch queue: com.apple.root.default-qos
+0   libsystem_kernel.dylib        	0x00007fff9c84dd42 __pthread_kill + 10
+1   libsystem_pthread.dylib       	0x00007fff9c93b457 pthread_kill + 90
+2   libsystem_c.dylib             	0x00007fff9c7b3420 abort + 129
+3   libc++abi.dylib               	0x00007fff9b30984a abort_message + 266
+4   libc++abi.dylib               	0x00007fff9b32ec37 default_terminate_handler() + 243
+5   libobjc.A.dylib               	0x00007fff9be3c713 _objc_terminate() + 124
+6   libc++abi.dylib               	0x00007fff9b32bd69 std::__terminate(void (*)()) + 8
+7   libc++abi.dylib               	0x00007fff9b32bde3 std::terminate() + 51
+8   libdispatch.dylib             	0x00007fff9c6e9910 _dispatch_client_callout + 28
+9   libdispatch.dylib             	0x00007fff9c6fea16 _dispatch_continuation_pop + 533
+10  libdispatch.dylib             	0x00007fff9c6f4a6c _dispatch_source_latch_and_call + 194
+11  libdispatch.dylib             	0x00007fff9c6ec13b _dispatch_source_invoke + 1248
+12  libdispatch.dylib             	0x00007fff9c6f8020 _dispatch_queue_override_invoke + 369
+13  libdispatch.dylib             	0x00007fff9c6eb6b5 _dispatch_root_queue_drain + 476
+14  libdispatch.dylib             	0x00007fff9c6eb48c _dispatch_worker_thread3 + 99
+15  libsystem_pthread.dylib       	0x00007fff9c9385a2 _pthread_wqthread + 1299
+16  libsystem_pthread.dylib       	0x00007fff9c93807d start_wqthread + 13
+
+Thread 3 crashed with X86 Thread State (64-bit):
+  rax: 0x0000000000000000  rbx: 0x0000000000000006  rcx: 0x00007000019986b8  rdx: 0x0000000000000000
+  rdi: 0x0000000000000f03  rsi: 0x0000000000000006  rbp: 0x00007000019986e0  rsp: 0x00007000019986b8
+   r8: 0x00007fff9c7dc650   r9: 0x00007fff9c79ea50  r10: 0x000000000c000000  r11: 0x0000000000000206
+  r12: 0x0000700001998840  r13: 0x0000000000000030  r14: 0x0000700001999000  r15: 0x0000000000000008
+  rip: 0x00007fff9c84dd42  rfl: 0x0000000000000206  cr2: 0x00007fff9c93931b
+  
+Logical CPU:     0
+Error Code:      0x02000148
+Trap Number:     133
+
+
+Binary Images:
+       0x105c01000 -        0x105c01ffb +test_without_dispatch_noexcept (0) <81B77EBF-960B-3D37-B388-7B01910D60BA> /Users/USER/Library/Developer/Xcode/DerivedData/dispatch_noexcept-gbgxvmirzpgjpsggbzpbebvnqozf/Build/Products/Debug/test_without_dispatch_noexcept
+       0x113917000 -        0x113954dc7  dyld (433.5) <322C06B7-8878-311D-888C-C8FD2CA96FF3> /usr/lib/dyld
+    0x7fff86eef000 -     0x7fff87388ff7  com.apple.CoreFoundation (6.9 - 1349.8) <09ED473E-5DE8-307F-B55C-16F6419236D5> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation
+    0x7fff9af38000 -     0x7fff9af39ff3  libDiagnosticMessagesClient.dylib (102) <84A04D24-0E60-3810-A8C0-90A65E2DF61A> /usr/lib/libDiagnosticMessagesClient.dylib
+    0x7fff9b177000 -     0x7fff9b178ffb  libSystem.B.dylib (1238.60.2) <FC9E9F13-3B18-305C-BE0A-97C7843652B0> /usr/lib/libSystem.B.dylib
+    0x7fff9b2b1000 -     0x7fff9b307ff7  libc++.1.dylib (307.5) <0B43BB5D-E6EB-3464-8DE9-B41AC8ED9D1C> /usr/lib/libc++.1.dylib
+    0x7fff9b308000 -     0x7fff9b332fff  libc++abi.dylib (307.3) <30199352-88BF-30BD-8CFF-2A4FBE247523> /usr/lib/libc++abi.dylib
+    0x7fff9b871000 -     0x7fff9ba96ffb  libicucore.A.dylib (57165.0.1) <2931B842-2946-3576-AD1D-1CDA22FA1388> /usr/lib/libicucore.A.dylib
+    0x7fff9be25000 -     0x7fff9c1f7047  libobjc.A.dylib (709) <DC77AA6E-A4E4-326D-8D7F-82D63AA88F99> /usr/lib/libobjc.A.dylib
+    0x7fff9c623000 -     0x7fff9c634ff3  libz.1.dylib (67) <46E3FFA2-4328-327A-8D34-A03E20BFFB8E> /usr/lib/libz.1.dylib
+    0x7fff9c643000 -     0x7fff9c647ff7  libcache.dylib (79) <093A4DAB-8385-3D47-A350-E20CB7CCF7BF> /usr/lib/system/libcache.dylib
+    0x7fff9c648000 -     0x7fff9c652fff  libcommonCrypto.dylib (60092.50.5) <8A64D1B0-C70E-385C-92F0-E669079FDA90> /usr/lib/system/libcommonCrypto.dylib
+    0x7fff9c653000 -     0x7fff9c65afff  libcompiler_rt.dylib (62) <55D47421-772A-32AB-B529-1A46C2F43B4D> /usr/lib/system/libcompiler_rt.dylib
+    0x7fff9c65b000 -     0x7fff9c663fff  libcopyfile.dylib (138) <819BEA3C-DF11-3E3D-A1A1-5A51C5BF1961> /usr/lib/system/libcopyfile.dylib
+    0x7fff9c664000 -     0x7fff9c6e7fdf  libcorecrypto.dylib (442.50.19) <65D7165E-2E71-335D-A2D6-33F78E2DF0C1> /usr/lib/system/libcorecrypto.dylib
+    0x7fff9c6e8000 -     0x7fff9c719fff  libdispatch.dylib (703.50.37) <6582BAD6-ED27-3B30-B620-90B1C5A4AE3C> /usr/lib/system/libdispatch.dylib
+    0x7fff9c71a000 -     0x7fff9c71fffb  libdyld.dylib (433.5) <EC3D88D2-3D40-3274-8E26-362C2D7352C8> /usr/lib/system/libdyld.dylib
+    0x7fff9c720000 -     0x7fff9c720ffb  libkeymgr.dylib (28) <7AA011A9-DC21-3488-BF73-3B5B14D1FDD6> /usr/lib/system/libkeymgr.dylib
+    0x7fff9c72e000 -     0x7fff9c72efff  liblaunch.dylib (972.60.2) <D3306CFF-58AA-3C90-B06C-B70E80E60C5B> /usr/lib/system/liblaunch.dylib
+    0x7fff9c72f000 -     0x7fff9c734ff3  libmacho.dylib (898) <17D5D855-F6C3-3B04-B680-E9BF02EF8AED> /usr/lib/system/libmacho.dylib
+    0x7fff9c735000 -     0x7fff9c737ff3  libquarantine.dylib (85.50.1) <12448CC2-378E-35F3-BE33-9DC395A5B970> /usr/lib/system/libquarantine.dylib
+    0x7fff9c738000 -     0x7fff9c739ffb  libremovefile.dylib (45) <38D4CB9C-10CD-30D3-8B7B-A515EC75FE85> /usr/lib/system/libremovefile.dylib
+    0x7fff9c73a000 -     0x7fff9c752ff7  libsystem_asl.dylib (349.50.5) <096E4228-3B7C-30A6-8B13-EC909A64499A> /usr/lib/system/libsystem_asl.dylib
+    0x7fff9c753000 -     0x7fff9c753ff7  libsystem_blocks.dylib (67) <10DC5404-73AB-35B3-A277-A8AFECB476EB> /usr/lib/system/libsystem_blocks.dylib
+    0x7fff9c754000 -     0x7fff9c7e1fef  libsystem_c.dylib (1158.50.2) <E5AE5244-7D0C-36AC-8BB6-C7AE7EA52A4B> /usr/lib/system/libsystem_c.dylib
+    0x7fff9c7e2000 -     0x7fff9c7e5ffb  libsystem_configuration.dylib (888.60.2) <BECC01A2-CA8D-31E6-BCDF-D452965FA976> /usr/lib/system/libsystem_configuration.dylib
+    0x7fff9c7e6000 -     0x7fff9c7e9fff  libsystem_coreservices.dylib (41.4) <7D26DE79-B424-3450-85E1-F7FAB32714AB> /usr/lib/system/libsystem_coreservices.dylib
+    0x7fff9c7ea000 -     0x7fff9c802fff  libsystem_coretls.dylib (121.50.4) <EC6FCF07-DCFB-3A03-9CC9-6DD3709974C6> /usr/lib/system/libsystem_coretls.dylib
+    0x7fff9c803000 -     0x7fff9c809fff  libsystem_dnssd.dylib (765.50.9) <CC960215-0B1B-3822-A13A-3DDE96FA796F> /usr/lib/system/libsystem_dnssd.dylib
+    0x7fff9c80a000 -     0x7fff9c833ff7  libsystem_info.dylib (503.50.4) <611DB84C-BF70-3F92-8702-B9F28A900920> /usr/lib/system/libsystem_info.dylib
+    0x7fff9c834000 -     0x7fff9c856ff7  libsystem_kernel.dylib (3789.60.24) <6E9E485F-91F6-36B7-A125-AE91DC978BCC> /usr/lib/system/libsystem_kernel.dylib
+    0x7fff9c857000 -     0x7fff9c89efe7  libsystem_m.dylib (3121.6) <86D499B5-BBDC-3D3B-8A4E-97AE8E6672A4> /usr/lib/system/libsystem_m.dylib
+    0x7fff9c89f000 -     0x7fff9c8bdff7  libsystem_malloc.dylib (116.50.8) <A3D15F17-99A6-3367-8C7E-4280E8619C95> /usr/lib/system/libsystem_malloc.dylib
+    0x7fff9c8be000 -     0x7fff9c917ffb  libsystem_network.dylib (856.60.1) <369D0221-56CA-3C3E-9EDE-94B41CAE77B7> /usr/lib/system/libsystem_network.dylib
+    0x7fff9c918000 -     0x7fff9c921ff3  libsystem_networkextension.dylib (563.60.2) <B021F2B3-8A75-3633-ABB0-FC012B8E9B0C> /usr/lib/system/libsystem_networkextension.dylib
+    0x7fff9c922000 -     0x7fff9c92bff3  libsystem_notify.dylib (165.20.1) <B8160190-A069-3B3A-BDF6-2AA408221FAE> /usr/lib/system/libsystem_notify.dylib
+    0x7fff9c92c000 -     0x7fff9c934fe7  libsystem_platform.dylib (126.50.8) <897462FD-B318-321B-A554-E61982630F7E> /usr/lib/system/libsystem_platform.dylib
+    0x7fff9c935000 -     0x7fff9c93fff7  libsystem_pthread.dylib (218.60.3) <B8FB5E20-3295-39E2-B5EB-B464D1D4B104> /usr/lib/system/libsystem_pthread.dylib
+    0x7fff9c940000 -     0x7fff9c943ff7  libsystem_sandbox.dylib (592.60.1) <DC780631-BD23-36B1-9376-668619E18D25> /usr/lib/system/libsystem_sandbox.dylib
+    0x7fff9c944000 -     0x7fff9c945ff3  libsystem_secinit.dylib (24.50.4) <F78B847B-3565-3E4B-98A6-F7AD40392E2D> /usr/lib/system/libsystem_secinit.dylib
+    0x7fff9c946000 -     0x7fff9c94dffb  libsystem_symptoms.dylib (532.50.47) <3390E07C-C1CE-348F-ADBD-2C5440B45EAA> /usr/lib/system/libsystem_symptoms.dylib
+    0x7fff9c94e000 -     0x7fff9c961ff7  libsystem_trace.dylib (518.60.2) <6B145B10-5874-3E89-90CD-D370DB475BA1> /usr/lib/system/libsystem_trace.dylib
+    0x7fff9c962000 -     0x7fff9c967ffb  libunwind.dylib (35.3) <3D50D8A8-C460-334D-A519-2DA841102C6B> /usr/lib/system/libunwind.dylib
+    0x7fff9c968000 -     0x7fff9c991ff7  libxpc.dylib (972.60.2) <1C9AF716-69DF-359F-85E9-7DFDE362F9A2> /usr/lib/system/libxpc.dylib
+
+External Modification Summary:
+  Calls made by other processes targeting this process:
+    task_for_pid: 0
+    thread_create: 0
+    thread_set_state: 0
+  Calls made by this process:
+    task_for_pid: 0
+    thread_create: 0
+    thread_set_state: 0
+  Calls made by all processes on this machine:
+    task_for_pid: 5604928
+    thread_create: 0
+    thread_set_state: 631
+
+VM Region Summary:
+ReadOnly portion of Libraries: Total=128.8M resident=0K(0%) swapped_out_or_unallocated=128.8M(100%)
+Writable regions: Total=37.4M written=0K(0%) resident=0K(0%) swapped_out=0K(0%) unallocated=37.4M(100%)
+ 
+                                VIRTUAL   REGION 
+REGION TYPE                        SIZE    COUNT (non-coalesced) 
+===========                     =======  ======= 
+Dispatch continuations            16.0M        2 
+Kernel Alloc Once                    8K        2 
+MALLOC                            19.2M       11 
+MALLOC guard page                   16K        4 
+STACK GUARD                         16K        5 
+Stack                             2088K        6 
+Stack Guard                       64.0M        3 
+__DATA                            2908K       46 
+__LINKEDIT                       114.1M        4 
+__TEXT                            14.7M       45 
+__UNICODE                          556K        2 
+shared memory                        8K        3 
+===========                     =======  ======= 
+TOTAL                            233.5M      121 
+
+Model: MacBookPro11,5, BootROM MBP114.0172.B16, 4 processors, Intel Core i7, 2.8 GHz, 16 GB, SMC 2.30f2
+Graphics: AMD Radeon R9 M370X, AMD Radeon R9 M370X, PCIe, 2048 MB
+Graphics: Intel Iris Pro, Intel Iris Pro, Built-In
+Memory Module: BANK 0/DIMM0, 8 GB, DDR3, 1600 MHz, 0x802C, 0x31364B544631473634485A2D314736453120
+Memory Module: BANK 1/DIMM0, 8 GB, DDR3, 1600 MHz, 0x802C, 0x31364B544631473634485A2D314736453120
+AirPort: spairport_wireless_card_type_airport_extreme (0x14E4, 0x152), Broadcom BCM43xx 1.0 (7.21.171.126.1a2)
+Bluetooth: Version 5.0.4f18, 3 services, 27 devices, 1 incoming serial ports
+Network Service: Wi-Fi, AirPort, en0
+Serial ATA Device: APPLE SSD SM0512G, 500.28 GB
+USB Device: USB 3.0 Bus
+USB Device: Apple Internal Keyboard / Trackpad
+USB Device: Bluetooth USB Host Controller
+Thunderbolt Bus: MacBook Pro, Apple Inc., 27.1
