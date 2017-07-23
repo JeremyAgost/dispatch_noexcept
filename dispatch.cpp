@@ -12,6 +12,7 @@
 #include <exception>
 #include <thread>
 #include <atomic>
+#include <iostream>
 
 // Remove the override macros from the header
 #undef dispatch_sync
@@ -39,22 +40,13 @@ void gc_dispatch_except_log_func(gc_dispatch_except_log_func_ptr ptr)
 
 #pragma mark - Logging
 
-#ifdef __APPLE__
-static inline void ShowString(CFStringRef string)
-{
-	CFShow(string);
-}
-#endif
-
-#ifdef __WIN32__
 static inline void ShowString(CFStringRef string)
 {
 	CFIndex alloclen = CFStringGetMaximumSizeForEncoding(CFStringGetLength(string), kCFStringEncodingASCII) + 1;
 	std::vector<char> cstr(static_cast<size_t>(alloclen));
 	CFStringGetCString(string, cstr.data(), alloclen, kCFStringEncodingASCII);
-	printf("%s\n", cstr.data());
+	std::cerr << cstr.data() << std::endl << std::flush;
 }
-#endif
 
 void CF_FORMAT_FUNCTION(1,2) LogWarningMessage(CFStringRef format, ...)
 {
@@ -98,7 +90,7 @@ static void noexcept_call_block(const std::string &bt_str, Block bl, Args ...arg
 		}
 		// Explicitly catch exception to force a stack unwind
 		catch (...) {
-			LogWarningMessage(CFSTR("FATAL APPLICATION ERROR -- An uncaught exception was intercepted before it could hit libdispatch and trigger an undefined behavior fault. Exception will be rethrown in C++ context. Block callee backtrace: %s"), bt_str.c_str());
+			LogWarningMessage(CFSTR("FATAL APPLICATION ERROR -- An uncaught exception was intercepted before it could hit libdispatch and trigger an undefined behavior fault. Exception will be rethrown in C++ context. Block callee backtrace:\n%s"), bt_str.c_str());
 			throw;
 		}
 	}
