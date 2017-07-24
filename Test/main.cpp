@@ -3,7 +3,8 @@
 //  test_without_dispatch_noexcept
 //
 //  Created by Jeremy Agostino on 7/23/17.
-//  Copyright © 2017 GroundControl Solutions Inc. All rights reserved.
+//  Copyright © 2017 GroundControl Solutions Inc.
+//  See accompanying LICENSE file.
 //
 
 #include <iostream>

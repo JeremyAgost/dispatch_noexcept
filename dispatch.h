@@ -3,11 +3,12 @@
 //  dispatch_noexcept
 //
 //  Created by Jeremy Agostino on 6/23/17.
-//  Copyright © 2017 Tekserve. All rights reserved.
+//  Copyright © 2017 GroundControl Solutions Inc.
+//  See accompanying LICENSE file.
 //
 
-#ifndef dispatch_hpp
-#define dispatch_hpp
+#ifndef gc_dne_dispatch_hpp
+#define gc_dne_dispatch_hpp
 
 #include <CoreFoundation/CoreFoundation.h>
 #include <dispatch/dispatch.h>
@@ -237,4 +238,4 @@ extern void _gc_dispatch_after_f_with_exception_handler(dispatch_time_t when, di
 	_Pragma(GCMKSTR(GCC error( "Method dispatch_after_f_noexcept is not supported." )))
 #endif
 
-#endif /* dispatch_hpp */
+#endif /* gc_dne_dispatch_hpp */
