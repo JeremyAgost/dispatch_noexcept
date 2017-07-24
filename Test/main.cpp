@@ -19,15 +19,19 @@ void throw_error() {
 	throw std::runtime_error("A nasty error has occurred");
 }
 
+void dispatch_thrower() {
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_global_queue(0,0), ^{
+		throw_error();
+	});
+}
+
 int main(int argc, const char * argv[]) {
 	
 #ifdef INCLUDE_DISPATCH_NOEXCEPT
 	gc_dispatch_except_log_backtrace(true);
 #endif
 	
-	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_global_queue(0,0), ^{
-		throw_error();
-	});
+	dispatch_thrower();
 	
 	dispatch_main();
 	

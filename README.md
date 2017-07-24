@@ -12,11 +12,13 @@ Call `gc_dispatch_except_log_backtrace(true)` to enable logging of backtraces wh
 
 ```
 FATAL APPLICATION ERROR -- An uncaught exception was intercepted before it could hit libdispatch and trigger an undefined behavior fault. Exception will be rethrown in C++ context. Block callee backtrace:
-0   libdispatch_noexcept.dylib          0x00000001000acd6d _Z26_gc_dispatch_get_backtracev + 125
+0   libdispatch_noexcept.dylib          0x00000001000acb1d _Z26_gc_dispatch_get_backtracev + 125
 1   libdispatch_noexcept.dylib          0x00000001000af643 _ZL21_dispatchRethrowBlockIJEEDtfp_EU13block_pointerFvDpT_E + 403
 2   libdispatch_noexcept.dylib          0x00000001000afd8d _gc_dispatch_after_with_exception_handler + 29
-3   test_with_dispatch_noexcept         0x0000000100000e6d main + 93
-4   libdyld.dylib                       0x00007fff9c71f235 start + 1
+3   test_with_dispatch_noexcept         0x0000000100000e43 _Z16dispatch_throwerv + 67
+4   test_with_dispatch_noexcept         0x0000000100000e97 main + 39
+5   libdyld.dylib                       0x00007fff9c71f235 start + 1
+libc++abi.dylib: terminating with uncaught exception of type std::runtime_error: A nasty error has occurred
 ```
 
 ### Testing
