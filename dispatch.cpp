@@ -70,7 +70,8 @@ void CF_FORMAT_FUNCTION(1,2) LogWarningMessage(CFStringRef format, ...)
 
 #pragma mark - Block wrapping helpers
 
-extern std::string _gc_dispatch_get_backtrace();
+extern std::vector<void *> _gc_dispatch_get_backtrace();
+extern std::string _gc_dispatch_get_backtrace_symbols(const std::vector<void *> &);
 
 #ifdef _WIN32
 // On Windows we don't get callee backtraces, so displaying those by forcing an unwind is not helpful
@@ -82,7 +83,7 @@ static constexpr bool force_unwind = true;
 #endif
 
 template <class Block, class ...Args>
-static void noexcept_call_block(const std::string &bt_str, Block bl, Args ...args) noexcept
+static void noexcept_call_block(const std::vector<void *> & bt, Block bl, Args ...args) noexcept
 {
 	if (force_unwind) {
 		try {
@@ -90,6 +91,7 @@ static void noexcept_call_block(const std::string &bt_str, Block bl, Args ...arg
 		}
 		// Explicitly catch exception to force a stack unwind
 		catch (...) {
+			auto bt_str = _gc_dispatch_get_backtrace_symbols(bt);
 			LogWarningMessage(CFSTR("FATAL APPLICATION ERROR -- An uncaught exception was intercepted before it could hit libdispatch and trigger an undefined behavior fault. Exception will be rethrown in C++ context. Block callee backtrace:\n%s"), bt_str.c_str());
 			throw;
 		}
@@ -116,15 +118,15 @@ static auto _dispatchRethrowBlock(void (^block)(Args...)) -> decltype(block)
 	__block auto blockRetained = Block_copy(block);
 	
 	// Generate a backtrace string, if required
-	std::string bt_str;
+	std::vector<void *> bt;
 	auto do_backtrace = log_backtrace.load(std::memory_order_relaxed);
 	if (do_backtrace) {
-		bt_str = _gc_dispatch_get_backtrace();
+		bt = _gc_dispatch_get_backtrace();
 	}
 	
 	auto blockWithExHandler = ^(Args...args){
 		// Ensure no exception escapes this block
-		noexcept_call_block(bt_str, blockRetained, args...);
+		noexcept_call_block(bt, blockRetained, args...);
 		Block_release(blockRetained);
 	};
 	return Block_copy(blockWithExHandler);
